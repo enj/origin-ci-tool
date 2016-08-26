@@ -3,6 +3,7 @@
   hosts: 'localhost'
   connection: 'local'
   become: 'no'
+  gather_facts: 'no'
 
   pre_tasks:
     - name: ensure all required variables are set
@@ -13,6 +14,9 @@
         - origin_ci_hosts
         - origin_ci_connection
         - origin_ci_golang_package
+
+    - debug:
+        var: origin_ci_golang_package
 
 - name: install Golang on a new host
   hosts: '{{ origin_ci_hosts }}'
