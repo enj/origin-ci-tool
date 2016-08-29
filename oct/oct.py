@@ -1,5 +1,6 @@
+import __main__
 import click
-
+from ansible.utils.display import Display
 from cli.build.group import build
 from cli.config.group import config
 from cli.install.group import install
@@ -7,6 +8,8 @@ from cli.prepare.group import prepare
 from cli.provision.group import provision
 from cli.sync.group import sync
 from cli.test.group import test
+
+__main__.display = Display(verbosity=10)
 
 
 @click.group(
